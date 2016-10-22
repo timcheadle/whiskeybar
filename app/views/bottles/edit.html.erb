@@ -1,6 +1,7 @@
-<h1>Editing Bottle</h1>
+<%= page_heading("Editing #{@bottle.name}") %>
 
-<%= render 'form', bottle: @bottle %>
-
-<%= link_to 'Show', @bottle %> |
-<%= link_to 'Back', bottles_path %>
+<div class="row">
+  <div class="col-md-6">
+    <%= render 'form', bottle: @bottle %>
+  </div>
+</div>

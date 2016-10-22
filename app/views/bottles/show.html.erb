@@ -1,4 +1,1 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_bottle_path(@bottle) %> |
-<%= link_to 'Back', bottles_path %>
+<%= page_heading(@bottle.name, "Edit", edit_bottle_path(@bottle)) %>

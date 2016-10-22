@@ -1,5 +1,7 @@
-<h1>New Bottle</h1>
+<%= page_heading("Add Bottle") %>
 
-<%= render 'form', bottle: @bottle %>
-
-<%= link_to 'Back', bottles_path %>
+<div class="row">
+  <div class="col-md-6">
+    <%= render 'form', bottle: @bottle %>
+  </div>
+</div>
