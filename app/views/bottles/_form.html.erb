@@ -1,0 +1,15 @@
+<%= bootstrap_form_for(bottle) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :producer %>
+  <%= f.select :spirit, %w(Bourbon Rye) %>
+  <%= f.text_field :volume %>
+  <%= f.text_field :proof %>
+  <%= f.text_field :release_year %>
+  <%= f.text_field :price %>
+  <%= f.text_field :acquired_on, value: Date.today %>
+  <%= f.text_area :notes %>
+  <%= f.check_box :open %>
+  <%= f.check_box :finished %>
+
+  <%= f.primary %>
+<% end %>
