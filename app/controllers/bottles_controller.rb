@@ -5,12 +5,15 @@ class BottlesController < ApplicationController
   # GET /bottles.json
   def index
     @bottles = Bottle.order(:name, :release_year)
+    @filter = params[:filter].try(:downcase)
 
-    case params[:filter].try(:downcase)
+    case @filter
     when "open"
       @bottles = @bottles.where(open: true)
     when "finished"
       @bottles = @bottles.where(finished: true)
+    when "all"
+      @bottles = @bottles.where.not(finished: true)
     end
   end
 

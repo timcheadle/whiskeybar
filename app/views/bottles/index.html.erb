@@ -1,4 +1,4 @@
-<%= page_heading("Bottles", "Add Bottle", new_bottle_path) %>
+<%= page_heading("#{@filter.present? ? @filter.capitalize : "Current" } Bottles") %>
 
 <table class="table table-striped">
   <thead>
