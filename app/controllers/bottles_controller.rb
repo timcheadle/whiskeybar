@@ -69,6 +69,20 @@ class BottlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bottle_params
-      params.fetch(:bottle, {})
+      params.require(:bottle).permit(
+        :name,
+        :producer,
+        :spirit,
+        :volume,
+        :proof,
+        :release_year,
+        :price,
+        :acquired_on,
+        :notes,
+        :acquired,
+        :open,
+        :finished,
+        :location
+      )
     end
 end
