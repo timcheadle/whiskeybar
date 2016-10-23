@@ -4,7 +4,7 @@ class BottlesController < ApplicationController
   # GET /bottles
   # GET /bottles.json
   def index
-    @bottles = Bottle.order(:name, :release_year)
+    @bottles = Bottle.order('LOWER(name), release_year')
     @filter = params[:filter].try(:downcase)
 
     case @filter
@@ -36,8 +36,28 @@ class BottlesController < ApplicationController
   def create
     @bottle = Bottle.new(bottle_params)
 
+    if @bottle.quantity == 1
+      saved_successfully = @bottle.save
+    else
+      # Try and create #{quantity} records
+      saved_successfully = false
+
+      if @bottle.valid?
+        Bottle.transaction do
+          begin
+            @bottle.quantity.to_i.times do
+              new_bottle = @bottle.dup
+              new_bottle.save!
+            end
+          else
+            saved_successfully = true
+          end
+        end
+      end
+    end
+
     respond_to do |format|
-      if @bottle.save
+      if saved_successfully
         format.html { redirect_to @bottle, notice: 'Bottle was successfully created.' }
         format.json { render :show, status: :created, location: @bottle }
       else
@@ -92,7 +112,8 @@ class BottlesController < ApplicationController
         :acquired,
         :open,
         :finished,
-        :location
+        :location,
+        :quantity
       )
     end
 end

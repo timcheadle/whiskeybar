@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(bottle) do |f| %>
+<%= bootstrap_form_for(bottle, label_errors: true) do |f| %>
   <%= f.text_field :name %>
   <%= f.text_field :producer %>
   <%= f.select :spirit, %w(Bourbon Rye Scotch) %>
@@ -7,7 +7,13 @@
   <%= f.text_field :release_year %>
   <%= f.text_field :price %>
   <%= f.text_field :acquired_on, value: Date.today %>
+  <%= f.text_field :location %>
   <%= f.text_area :notes %>
+
+  <% unless bottle.persisted? %>
+    <%= f.text_field :quantity %>
+  <% end %>
+
   <%= f.check_box :open %>
   <%= f.check_box :finished %>
 
