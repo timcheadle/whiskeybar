@@ -4,7 +4,7 @@ require 'csv'
 namespace :import do
   desc "Import bottles via CSV"
   task bottles: :environment do
-    Bottle.destroy_all
+    Bottle.destroy_all if ENV["DESTROY_ALL"].present?
 
     CSV.foreach(open(ENV.fetch("CSV")), headers: true) do |row|
       puts row.to_hash
@@ -21,7 +21,7 @@ namespace :import do
         acquired: row["Acquired At"],
         release_year: row["Released"],
         open: row["Open"].present?,
-        finished: ENV['FINISHED'].present?
+        finished: ENV["FINISHED"].present?
       )
     end
   end
