@@ -1,1 +1,64 @@
 <%= page_heading(@bottle.name, "Edit", edit_bottle_path(@bottle)) %>
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table">
+      <tr>
+        <td><strong>Spirit</strong></td>
+        <td><%= @bottle.spirit%></td>
+      </tr>
+      <tr>
+        <td><strong>Producer</strong></td>
+        <td><%= @bottle.producer %></td>
+      </tr>
+      <tr>
+        <td><strong>Release Year</strong></td>
+        <td><%= @bottle.release_year %></td>
+      </tr>
+      <tr>
+        <td><strong>Proof</strong></td>
+        <td><%= @bottle.producer %></td>
+      </tr>
+      <tr>
+        <td><strong>Volume</strong></td>
+        <td><%= @bottle.producer %></td>
+      </tr>
+      <tr>
+        <td><strong>Price</strong></td>
+        <td><%= @bottle.price %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="col-md-6">
+    <table class="table">
+      <tr>
+        <td><strong>Bottle Location</strong></td>
+        <td><%= @bottle.location %></td>
+      </tr>
+      <tr>
+        <td><strong>Acquired At</strong></td>
+        <td><%= @bottle.acquired %></td>
+      </tr>
+      <tr>
+        <td><strong>Acquired On</strong></td>
+        <td><%= @bottle.acquired_on %></td>
+      </tr>
+      <tr>
+        <td><strong>Open</strong></td>
+        <td><%= @bottle.open? ? "Yes" : "No" %></td>
+      </tr>
+      <tr>
+        <td><strong>Finished</strong></td>
+        <td><%= @bottle.finished? ? "Yes" : "No" %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">Notes</h4>
+    <%= @bottle.notes %>
+  </div>
+</div>

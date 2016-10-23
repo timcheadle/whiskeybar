@@ -12,7 +12,7 @@
   <tbody>
     <% @bottles.each do |bottle| %>
       <tr>
-        <td><%= link_to bottle.name, edit_bottle_path(@bottle) %></td>
+        <td><%= link_to bottle.name, bottle_path(bottle) %></td>
         <td><%= bottle.spirit %></td>
         <td><%= bottle.release_year %></td>
       </tr>
