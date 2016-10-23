@@ -2,7 +2,7 @@ class Bottle < ApplicationRecord
   validates :name, presence: true
   #validates :producer, presence: true
   validates :spirit, presence: true
-  validates :location, presence: true
+  validates :location, presence: true, unless: :finished?
   validates :acquired_on, presence: true
 
   validates :volume, presence: true

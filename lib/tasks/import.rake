@@ -6,13 +6,14 @@ namespace :import do
   task bottles: :environment do
     Bottle.destroy_all if ENV["DESTROY_ALL"].present?
 
-    CSV.foreach(open(ENV.fetch("CSV")), headers: true) do |row|
+    csv_file = open(ENV.fetch("CSV")).read
+    CSV.parse(csv_file, headers: true).each do |row|
       puts row.to_hash
 
       bottle = Bottle.create!(
         name: row["Name"],
-        spirit: row["Type"].capitalize,
-        location: row["Location"].capitalize,
+        spirit: row["Type"].try(:capitalize),
+        location: row["Location"].try(:capitalize),
         acquired_on: Date.strptime(row["Acquired On"] || "1990-01", "%Y-%m"),
         volume: row["Volume (ml)"],
         proof: row["Proof"],
