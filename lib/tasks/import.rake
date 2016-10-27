@@ -12,8 +12,8 @@ namespace :import do
 
       bottle = Bottle.create!(
         name: row["Name"],
-        spirit: row["Type"].try(:capitalize),
-        location: row["Location"].try(:capitalize),
+        spirit: row["Type"]
+        location: row["Location"]
         acquired_on: Date.strptime(row["Acquired On"] || "1990-01", "%Y-%m"),
         volume: row["Volume (ml)"],
         proof: row["Proof"],

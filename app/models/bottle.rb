@@ -16,7 +16,19 @@ class Bottle < ApplicationRecord
 
   validates :release_year, numericality: { greater_than: 0, only_integer: true, allow_nil: true }
 
+  scope :open, -> { where(open: true) }
+  scope :finished, -> { where(finished: true) }
+  scope :current, -> { where.not(finished: true) }
+
   def quantity
     @quantity || 1
+  end
+
+  def location=(new_location)
+    self[:location] = new_location.try(:capitalize)
+  end
+
+  def spirit=(new_spirit)
+    self[:spirit] = new_spirit.try(:capitalize)
   end
 end

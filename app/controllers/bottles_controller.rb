@@ -9,11 +9,11 @@ class BottlesController < ApplicationController
 
     case @filter
     when "open"
-      @bottles = @bottles.where(open: true)
+      @bottles = @bottles.open
     when "finished"
-      @bottles = @bottles.where(finished: true)
-    when "all"
-      @bottles = @bottles.where.not(finished: true)
+      @bottles = @bottles.finished
+    else
+      @bottles = @bottles.current
     end
   end
 
