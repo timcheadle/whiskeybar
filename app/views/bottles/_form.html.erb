@@ -1,7 +1,7 @@
 <%= bootstrap_form_for(bottle, label_errors: true) do |f| %>
   <%= f.text_field :name %>
   <%= f.text_field :producer %>
-  <%= f.select :spirit, %w(Bourbon Rye Scotch) %>
+  <%= f.select :spirit, %w(Bourbon Rye Scotch Rum Gin Other) %>
   <%= f.text_field :volume %>
   <%= f.text_field :proof %>
   <%= f.text_field :release_year %>
