@@ -3,3 +3,17 @@
 body {
   padding-top: 5rem;
 }
+
+// Bottle List
+.bottle-list-item {
+  padding: 8px 0;
+
+  &:nth-child(odd) {
+    background-color: #eee;
+  }
+
+  .bottle-details {
+    font-size: 0.9rem;
+    color: $gray-light;
+  }
+}

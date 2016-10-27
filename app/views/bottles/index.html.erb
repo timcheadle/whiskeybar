@@ -1,21 +1,21 @@
 <%= page_heading("#{@filter.present? ? @filter.capitalize : "Current" } Bottles") %>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Spirit</th>
-      <th>Release Year</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bottles.each do |bottle| %>
-      <tr>
-        <td><%= link_to bottle.name, bottle_path(bottle) %></td>
-        <td><%= bottle.spirit %></td>
-        <td><%= bottle.release_year %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ul class="list-unstyled bottles-list">
+  <% @bottles.each do |bottle| %>
+    <li class="row bottle-list-item">
+      <div class="col-md-6">
+        <%= link_to bottle.name, bottle_path(bottle), class: "bottle-name" %>
+      </div>
+      <div class="col-md-6 bottle-details">
+        <div class="row">
+          <div class="col-xs-6">
+            <%= bottle.spirit %>
+          </div>
+          <div class="col-xs-6">
+            <%= bottle.release_year %>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
