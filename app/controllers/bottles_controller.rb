@@ -27,6 +27,10 @@ class BottlesController < ApplicationController
     @bottle = Bottle.new
   end
 
+  def duplicate
+    @bottle = Bottle.find(params[:id]).dup
+  end
+
   # GET /bottles/1/edit
   def edit
   end
