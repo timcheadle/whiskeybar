@@ -1,4 +1,10 @@
-<%= page_heading(@bottle.name, "Edit", edit_bottle_path(@bottle)) %>
+<%= content_for(:title, @bottle.name) %>
+
+<div class="page-header">
+  <%= link_to "Edit", edit_bottle_path(@bottle), class: "btn btn-primary float-xs-right" %>
+  <%= link_to "Duplicate", duplicate_bottle_path(@bottle), class: "btn btn-outline-primary mr-1 float-xs-right" %>
+  <h1><%= @bottle.name %></h1>
+</div>
 
 <div class="row">
   <div class="col-md-6">

@@ -10,10 +10,10 @@ namespace :import do
     CSV.parse(csv_file, headers: true).each do |row|
       puts row.to_hash
 
-      bottle = Bottle.create!(
+      Bottle.create!(
         name: row["Name"],
-        spirit: row["Type"]
-        location: row["Location"]
+        spirit: row["Type"],
+        location: row["Location"],
         acquired_on: Date.strptime(row["Acquired On"] || "1990-01", "%Y-%m"),
         volume: row["Volume (ml)"],
         proof: row["Proof"],
