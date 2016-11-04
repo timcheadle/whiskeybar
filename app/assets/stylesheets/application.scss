@@ -17,3 +17,9 @@ body {
     color: $gray-light;
   }
 }
+
+.page-header {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid $gray-lighter;
+  margin-bottom: 1.5rem;
+}
