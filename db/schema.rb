@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022174506) do
+ActiveRecord::Schema.define(version: 20161104013710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20161022174506) do
     t.decimal  "price"
     t.date     "acquired_on"
     t.text     "notes"
-    t.string   "acquired"
+    t.string   "source"
     t.boolean  "open"
     t.boolean  "finished"
     t.string   "location"

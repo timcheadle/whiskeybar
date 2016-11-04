@@ -9,8 +9,8 @@ bourbon:
   release_year: 2016
   price: 9.99
   location: Bar
+  source: VA ABC
   acquired_on: 2016-10-22
   notes: Oak and Cedar pick
-  acquired: VA ABC
   open: false
   finished: false
