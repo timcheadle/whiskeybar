@@ -3,16 +3,22 @@
 <ul class="list-unstyled bottles-list">
   <% @bottles.each do |bottle| %>
     <li class="row bottle-list-item">
-      <div class="col-md-6">
+      <div class="col-md-7">
         <%= link_to bottle.name, bottle_path(bottle), class: "bottle-name" %>
       </div>
-      <div class="col-md-6 bottle-details">
+      <div class="col-md-5 bottle-details">
         <div class="row">
-          <div class="col-xs-6">
+          <div class="col-xs-2">
+            <%= bottle.release_year %>
+          </div>
+          <div class="col-xs-3">
             <%= bottle.spirit %>
           </div>
-          <div class="col-xs-6">
-            <%= bottle.release_year %>
+          <div class="col-xs-2">
+            <%= bottle.proof %>&deg;
+          </div>
+          <div class="col-xs-2">
+            <%= bottle.volume %>ml
           </div>
         </div>
       </div>
