@@ -1,7 +1,24 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-bourbon:
-  name: Old Bourbon
+alice_bourbon:
+  user: alice
+  name: Alice Bourbon
+  producer: Buffalo Trace
+  spirit: Bourbon
+  volume: 750
+  proof: 99.5
+  release_year: 2016
+  price: 9.99
+  location: Bar
+  source: VA ABC
+  acquired_on: 2016-10-22
+  notes: Oak and Cedar pick
+  open: false
+  finished: false
+
+bob_bourbon:
+  user: bob
+  name: Bob Bourbon
   producer: Buffalo Trace
   spirit: Bourbon
   volume: 750

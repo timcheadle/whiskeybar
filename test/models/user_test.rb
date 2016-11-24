@@ -1,7 +1,13 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @user = users(:alice)
+  end
+
+  test "has a valid fixture" do
+    assert @user.valid?
+  end
+
+  should have_many(:bottles)
 end
