@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :bottles do
     collection do
       get "/:filter", to: "bottles#index", as: :filtered, constraints: { filter: /open|finished/ }
@@ -8,5 +9,6 @@ Rails.application.routes.draw do
       get "/duplicate", to: "bottles#duplicate", as: :duplicate
     end
   end
+
   root to: "bottles#index"
 end

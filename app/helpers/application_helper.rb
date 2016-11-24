@@ -1,4 +1,13 @@
 module ApplicationHelper
+  def bootstrap_class_for flash_type
+    {
+      success: 'alert-success',
+      notice: 'alert-info',
+      alert: 'alert-warning',
+      error: 'alert-danger'
+    }[flash_type.to_sym] || flash_type.to_s
+  end
+
   def page_heading(title, button_text = nil, button_url = nil)
     content_for(:title, title)
 
