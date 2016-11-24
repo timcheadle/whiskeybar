@@ -8,7 +8,7 @@
     <meta name="description" content="Whiskey Bar is a home whiskey inventory tracking tool for collectors.">
     <meta name="author" content="Tim Cheadle">
 
-		<title>Whiskey Bar<%= content_for?(:title) ? " | " + yield(:title) : "" %></title>
+    <title>Whiskey Bar<%= content_for?(:title) ? " | " + yield(:title) : "" %></title>
 
     <%= csrf_meta_tags %>
 
@@ -19,7 +19,7 @@
   <body>
     <%= render "layouts/navbar" %>
 
-		<div class="container">
+    <div class="container">
       <% flash.each do |type, message| %>
         <div class="alert alert-dismissable <%= bootstrap_class_for(type) %>">
           <button class="close" data-dismiss="alert">&times;</button>
@@ -27,7 +27,7 @@
         </div>
       <% end %>
 
-			<%= yield %>
-		</div>
+      <%= yield %>
+    </div>
   </body>
 </html>
