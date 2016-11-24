@@ -8,5 +8,6 @@ Rails.application.routes.draw do
       get "/duplicate", to: "bottles#duplicate", as: :duplicate
     end
   end
+
   root to: "bottles#index"
 end
