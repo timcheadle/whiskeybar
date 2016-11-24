@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :bottles do
     collection do
       get "/:filter", to: "bottles#index", as: :filtered, constraints: { filter: /open|finished/ }
