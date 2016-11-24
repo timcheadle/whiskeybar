@@ -5,7 +5,7 @@ class BottlesController < ApplicationController
   # GET /bottles
   # GET /bottles.json
   def index
-    @bottles = Bottle.order('LOWER(name), release_year')
+    @bottles = Bottle.where(user: current_user).order('LOWER(name), release_year')
     @filter = params[:filter].try(:downcase)
 
     case @filter
@@ -40,6 +40,7 @@ class BottlesController < ApplicationController
   # POST /bottles.json
   def create
     @bottle = Bottle.new(bottle_params)
+    @bottle.user = current_user
 
     if @bottle.quantity == 1
       saved_successfully = @bottle.save
@@ -49,14 +50,12 @@ class BottlesController < ApplicationController
 
       if @bottle.valid?
         Bottle.transaction do
-          begin
-            @bottle.quantity.to_i.times do
-              new_bottle = @bottle.dup
-              new_bottle.save!
-            end
-          else
-            saved_successfully = true
+          @bottle.quantity.to_i.times do
+            new_bottle = @bottle.dup
+            new_bottle.save!
           end
+
+          saved_successfully = true
         end
       end
     end
@@ -99,7 +98,7 @@ class BottlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bottle
-      @bottle = Bottle.find(params[:id])
+      @bottle = Bottle.find_by(user: current_user, id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
