@@ -6,7 +6,7 @@ class Bottle < ApplicationRecord
 
   validates :name, presence: true
   validates :spirit, presence: true
-  validates :location, presence: true, unless: :finished?
+  validates :location, presence: true, unless: -> (bottle) { bottle.finished? }
   validates :acquired_on, presence: true
 
   validates :volume, presence: true
@@ -19,8 +19,12 @@ class Bottle < ApplicationRecord
   validates :release_year, numericality: { greater_than: 0, only_integer: true, allow_nil: true }
 
   scope :open, -> { where(open: true) }
-  scope :finished, -> { where(finished: true) }
-  scope :current, -> { where.not(finished: true) }
+  scope :finished, -> { where.not(finished_on: nil) }
+  scope :current, -> { where(finished_on: nil) }
+
+  def finished?
+    finished_on.present?
+  end
 
   def quantity
     @quantity || 1
