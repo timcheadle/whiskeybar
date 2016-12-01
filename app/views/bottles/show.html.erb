@@ -68,3 +68,5 @@
     <%= @bottle.notes %>
   </div>
 </div>
+
+<%= link_to "Delete", bottle_path(@bottle), method: :delete, class: "text-danger", data: { confirm: "Are you sure you want to delete this bottle?" } %>
