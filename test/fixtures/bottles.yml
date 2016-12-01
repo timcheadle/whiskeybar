@@ -14,7 +14,7 @@ alice_bourbon:
   acquired_on: 2016-10-22
   notes: Oak and Cedar pick
   open: false
-  finished: false
+  finished_on:
 
 bob_bourbon:
   user: bob
@@ -30,4 +30,4 @@ bob_bourbon:
   acquired_on: 2016-10-22
   notes: Oak and Cedar pick
   open: false
-  finished: false
+  finished_on:

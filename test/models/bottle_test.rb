@@ -22,8 +22,16 @@ class BottleTest < ActiveSupport::TestCase
   should validate_numericality_of(:release_year).is_greater_than(0).only_integer.allow_nil
   should validate_numericality_of(:quantity).is_greater_than(0).only_integer
 
+  test "#finished?" do
+    @bottle.finished_on = nil
+    refute @bottle.finished?
+
+    @bottle.finished_on = Date.today
+    assert @bottle.finished?
+  end
+
   test "location should be present if not finished" do
-    @bottle.finished = false
+    @bottle.finished_on = nil
     @bottle.location = nil
     refute @bottle.valid?
 
@@ -33,7 +41,7 @@ class BottleTest < ActiveSupport::TestCase
 
   test "location can be nil if finished" do
     @bottle.location = nil
-    @bottle.finished = true
+    @bottle.finished_on = Date.today
     assert @bottle.valid?
   end
 end
