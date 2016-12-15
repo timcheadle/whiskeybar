@@ -30,3 +30,15 @@ body {
 .mr-small {
   margin-right: 0.5rem !important;
 }
+
+.bottle-data {
+  margin-bottom: 20px;
+
+  table:first-child {
+    margin-bottom: 0;
+  }
+
+  td:first-child {
+    width: 160px;
+  }
+}
