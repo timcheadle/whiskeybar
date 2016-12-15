@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Bootstrap
-gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'bootstrap-sass'
 gem 'bootstrap_form'
 
 gem 'devise'

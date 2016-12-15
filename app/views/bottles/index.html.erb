@@ -1,4 +1,9 @@
-<%= page_heading("#{@filter.present? ? @filter.capitalize : "Current" } Bottles") %>
+<% page_title = "#{@filter.present? ? @filter.capitalize : "Current" } Bottles" %>
+
+<div class="page-header">
+  <%= link_to "Add Bottle", new_bottle_path, class: "btn btn-success pull-right" %>
+  <h1><%= page_title %></h1>
+</div>
 
 <ul class="list-unstyled bottles-list">
   <% @bottles.each do |bottle| %>

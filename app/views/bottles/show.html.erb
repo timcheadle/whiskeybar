@@ -1,8 +1,8 @@
 <%= content_for(:title, @bottle.name) %>
 
 <div class="page-header">
-  <%= link_to "Edit", edit_bottle_path(@bottle), class: "btn btn-primary float-xs-right" %>
-  <%= link_to "Duplicate", duplicate_bottle_path(@bottle), class: "btn btn-outline-primary mr-1 float-xs-right" %>
+  <%= link_to "Edit", edit_bottle_path(@bottle), class: "btn btn-primary pull-right" %>
+  <%= link_to "Duplicate", duplicate_bottle_path(@bottle), class: "btn btn-default pull-right mr-small" %>
   <h1><%= @bottle.name %></h1>
 </div>
 
@@ -62,9 +62,9 @@
   </div>
 </div>
 
-<div class="card">
-  <div class="card-block">
-    <h4 class="card-title">Notes</h4>
+<div class="panel panel-default">
+  <div class="panel-heading">Notes</div>
+  <div class="panel-body">
     <%= @bottle.notes %>
   </div>
 </div>
