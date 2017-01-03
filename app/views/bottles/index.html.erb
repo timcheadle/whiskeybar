@@ -1,32 +1,61 @@
 <% page_title = "#{@filter.present? ? @filter.capitalize : "Current" } Bottles" %>
 
 <div class="page-header">
-  <%= link_to "Add Bottle", new_bottle_path, class: "btn btn-success pull-right" %>
+  <%= link_to "Add Bottle", new_bottle_path, class: "btn btn-success pull-right hidden-xs" %>
+  <%= link_to new_bottle_path, class: "btn btn-success pull-right visible-xs" do %>
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  <% end %>
   <h1><%= page_title %></h1>
 </div>
 
 <ul class="list-unstyled bottles-list">
   <% @bottles.each do |bottle| %>
-    <li class="row bottle-list-item">
-      <div class="col-md-7">
-        <%= link_to bottle.name, bottle_path(bottle), class: "bottle-name" %>
-      </div>
-      <div class="col-md-5 bottle-details">
+    <li class="row bottle-list-item" data-bottle-id="<%= bottle.id %>">
+      <div class="<%= @inventory_mode ? "col-xs-10" : "col-xs-12" %>">
         <div class="row">
-          <div class="col-xs-2">
-            <%= bottle.release_year %>
+          <div class="col-md-7">
+            <%= link_to bottle.name, bottle_path(bottle), class: "bottle-name" %>
           </div>
-          <div class="col-xs-3">
-            <%= bottle.spirit %>
-          </div>
-          <div class="col-xs-2">
-            <%= bottle.proof %>&deg;
-          </div>
-          <div class="col-xs-2">
-            <%= bottle.volume %>ml
+          <div class="col-md-5 bottle-details">
+            <div class="row">
+              <div class="col-xs-2">
+                <%= bottle.release_year %>
+              </div>
+              <div class="col-xs-3">
+                <%= bottle.spirit %>
+              </div>
+              <div class="col-xs-2">
+                <%= bottle.proof %>&deg;
+              </div>
+              <div class="col-xs-2">
+                <%= bottle.volume %>ml
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <% if @inventory_mode %>
+        <div class="col-xs-2">
+          <% if bottle.in_stock? %>
+            <%= link_to unstock_bottle_path(bottle), remote: true, class: "stock-toggle btn btn-sm btn-success pull-right visible-xs" do %>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <% end %>
+          <% else %>
+            <%= link_to stock_bottle_path(bottle), remote: true, class: "stock-toggle btn btn-sm btn-default pull-right visible-xs" do %>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
     </li>
   <% end %>
 </ul>
+
+<p>
+  <% if @inventory_mode %>
+    <%= link_to "End Inventory", toggle_inventory_bottles_path, data: { confirm: "End Inventory?" } %>
+  <% else %>
+    <%= link_to "Start Inventory", toggle_inventory_bottles_path, data: { confirm: "Start Inventory?" } %>
+  <% end %>
+</p>

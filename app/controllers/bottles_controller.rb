@@ -1,6 +1,7 @@
 class BottlesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_bottle, only: [:show, :edit, :update, :destroy]
+  before_action :set_bottle, only: [:show, :edit, :update, :destroy, :stock, :unstock]
+  before_action :set_inventory_mode
 
   # GET /bottles
   # GET /bottles.json
@@ -13,6 +14,8 @@ class BottlesController < ApplicationController
       @bottles = @bottles.open
     when "finished"
       @bottles = @bottles.finished
+    when "unstocked"
+      @bottles = @bottles.unstocked
     else
       @bottles = @bottles.current
     end
@@ -95,10 +98,33 @@ class BottlesController < ApplicationController
     end
   end
 
+  def toggle_inventory
+    if session[:inventory_mode]
+      session[:inventory_mode] = false
+    else
+      Bottle.update_all(in_stock: false)
+      session[:inventory_mode] = true
+    end
+
+    redirect_to bottles_path
+  end
+
+  def stock
+    @bottle.update(in_stock: true)
+  end
+
+  def unstock
+    @bottle.update(in_stock: false)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bottle
       @bottle = Bottle.find_by(user: current_user, id: params[:id])
+    end
+
+    def set_inventory_mode
+      @inventory_mode = !!session[:inventory_mode]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -117,7 +143,8 @@ class BottlesController < ApplicationController
         :open,
         :finished,
         :location,
-        :quantity
+        :quantity,
+        :in_stock
       )
     end
 end
