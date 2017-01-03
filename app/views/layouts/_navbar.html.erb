@@ -22,6 +22,11 @@
           <li class="nav-item">
             <%= link_to "Finished", filtered_bottles_path(filter: :finished), class: "nav-link" %>
           </li>
+          <% if @inventory_mode %>
+            <li class="nav-item">
+              <%= link_to "Not Stocked", filtered_bottles_path(filter: :unstocked), class: "nav-link" %>
+            </li>
+          <% end %>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 body {
-  padding-top: 5rem;
+  padding-top: 50px;
 }
 
 // Bottle List
@@ -29,6 +29,9 @@ body {
 // Margin utils
 .mr-small {
   margin-right: 0.5rem !important;
+}
+.mb-medium {
+  margin-bottom: 20px !important;
 }
 
 .bottle-data {

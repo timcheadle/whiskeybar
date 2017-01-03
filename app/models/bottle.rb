@@ -20,6 +20,7 @@ class Bottle < ApplicationRecord
 
   scope :open, -> { where(open: true) }
   scope :finished, -> { where.not(finished_on: nil) }
+  scope :unstocked, -> { where(in_stock: false) }
   scope :current, -> { where(finished_on: nil) }
 
   def finished?

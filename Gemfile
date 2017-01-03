@@ -48,6 +48,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'minitest-reporters'
   gem 'shoulda', '~> 3.5'
   gem 'shoulda-matchers', '~> 2.0'
 end
