@@ -15,6 +15,7 @@ alice_bourbon:
   notes: Oak and Cedar pick
   open: false
   finished_on:
+  in_stock: true
 
 bob_bourbon:
   user: bob
@@ -31,3 +32,4 @@ bob_bourbon:
   notes: Oak and Cedar pick
   open: false
   finished_on:
+  in_stock: true
