@@ -38,11 +38,11 @@
       <% if @inventory_mode %>
         <div class="col-xs-2">
           <% if bottle.in_stock? %>
-            <%= link_to unstock_bottle_path(bottle), remote: true, class: "stock-toggle btn btn-sm btn-success pull-right visible-xs" do %>
+            <%= link_to unstock_bottle_path(bottle), remote: true, class: "stock-toggle btn btn-sm btn-success pull-right" do %>
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             <% end %>
           <% else %>
-            <%= link_to stock_bottle_path(bottle), remote: true, class: "stock-toggle btn btn-sm btn-default pull-right visible-xs" do %>
+            <%= link_to stock_bottle_path(bottle), remote: true, class: "stock-toggle btn btn-sm btn-default pull-right" do %>
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             <% end %>
           <% end %>
@@ -51,11 +51,3 @@
     </li>
   <% end %>
 </ul>
-
-<p>
-  <% if @inventory_mode %>
-    <%= link_to "End Inventory", toggle_inventory_bottles_path, data: { confirm: "End Inventory?" } %>
-  <% else %>
-    <%= link_to "Start Inventory", toggle_inventory_bottles_path, data: { confirm: "Start Inventory?" } %>
-  <% end %>
-</p>

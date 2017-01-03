@@ -26,6 +26,13 @@
             <li class="nav-item">
               <%= link_to "Not Stocked", filtered_bottles_path(filter: :unstocked), class: "nav-link" %>
             </li>
+            <li class="nav-item">
+              <%= link_to "End Inventory", toggle_inventory_bottles_path, data: { confirm: "End Inventory?" } %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Start Inventory", toggle_inventory_bottles_path, data: { confirm: "Start Inventory?" } %>
+            </li>
           <% end %>
         </ul>
 
