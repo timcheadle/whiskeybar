@@ -1,4 +1,6 @@
 class Bottle < ApplicationRecord
+  include PgSearch
+
   attr_accessor :quantity
 
   belongs_to :user
@@ -22,6 +24,12 @@ class Bottle < ApplicationRecord
   scope :finished, -> { where.not(finished_on: nil) }
   scope :unstocked, -> { where(in_stock: false) }
   scope :current, -> { where(finished_on: nil) }
+
+  pg_search_scope :search_for,
+    against: %i(name producer spirit release_year notes location),
+    using: {
+      tsearch: { prefix: true }
+    }
 
   def finished?
     finished_on.present?
