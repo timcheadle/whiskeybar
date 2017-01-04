@@ -9,6 +9,10 @@ class BottlesController < ApplicationController
     @bottles = Bottle.where(user: current_user).order('LOWER(name), release_year')
     @filter = params[:filter].try(:downcase)
 
+    if (@query = params[:q]).present?
+      @bottles = @bottles.search_for(@query)
+    end
+
     case @filter
     when "open"
       @bottles = @bottles.open

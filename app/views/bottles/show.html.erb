@@ -64,6 +64,10 @@
         <td><strong>Finished On</strong></td>
         <td><%= @bottle.finished_on %></td>
       </tr>
+      <tr>
+        <td><strong>In Stock</strong></td>
+        <td><%= @bottle.in_stock? ? "Yes" : "No" %></td>
+      </tr>
     </table>
   </div>
 </div>
