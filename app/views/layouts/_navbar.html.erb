@@ -24,6 +24,9 @@
           </li>
           <% if @inventory_mode %>
             <li class="nav-item">
+              <%= link_to "Stocked", filtered_bottles_path(filter: :stocked), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
               <%= link_to "Not Stocked", filtered_bottles_path(filter: :unstocked), class: "nav-link" %>
             </li>
             <li class="nav-item">

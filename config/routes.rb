@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :bottles do
     collection do
-      get "/:filter", to: "bottles#index", as: :filtered, constraints: { filter: /open|finished|unstocked/ }
+      get "/:filter", to: "bottles#index", as: :filtered, constraints: { filter: /open|finished|stocked|unstocked/ }
       get "/toggle_inventory", to: "bottles#toggle_inventory", as: :toggle_inventory
     end
 

@@ -18,6 +18,8 @@ class BottlesController < ApplicationController
       @bottles = @bottles.open
     when "finished"
       @bottles = @bottles.finished
+    when "stocked"
+      @bottles = @bottles.stocked
     when "unstocked"
       @bottles = @bottles.unstocked
     else
