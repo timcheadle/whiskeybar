@@ -13,10 +13,11 @@
     </div>
   </div>
 
-  <%= f.number_field :release_year %>
+  <%= f.select :release_year, (1870..Time.now.year).to_a.reverse %>
+
   <%= f.number_field :price %>
   <%= f.text_field :source %>
-  <%= f.text_field :acquired_on, value: Date.today %>
+  <%= f.text_field :acquired_on, value: Date.today, class: "datepicker" %>
   <%= f.text_field :location %>
   <%= f.text_area :notes %>
 
@@ -27,7 +28,7 @@
   <%= f.check_box :in_stock%>
   <%= f.check_box :open %>
 
-  <%= f.text_field :finished_on %>
+  <%= f.text_field :finished_on, class: "datepicker" %>
 
   <%= f.primary %>
 <% end %>

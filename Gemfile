@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Bootstrap
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
+gem "bootstrap-datepicker-rails"
 
 gem 'devise'
 
