@@ -105,13 +105,12 @@ class BottlesController < ApplicationController
   end
 
   def toggle_inventory
-    if session[:inventory_mode]
-      session[:inventory_mode] = false
-    else
-      Bottle.update_all(in_stock: false)
-      session[:inventory_mode] = true
-    end
+    session[:inventory_mode] = !session[:inventory_mode]
+    redirect_to bottles_path
+  end
 
+  def reset_stock
+    Bottle.update_all(in_stock: false)
     redirect_to bottles_path
   end
 

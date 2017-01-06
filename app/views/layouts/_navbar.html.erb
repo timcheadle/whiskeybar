@@ -1,16 +1,16 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<%= link_to "Whiskey Bar", root_path, class: "navbar-brand" %>
-		</div>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Whiskey Bar", root_path, class: "navbar-brand" %>
+    </div>
 
-		<div id="navbar" class="navbar-collapse collapse">
+    <div id="navbar" class="navbar-collapse collapse">
       <% if user_signed_in? %>
         <ul class="nav navbar-nav">
           <li class="nav-item">
@@ -22,21 +22,29 @@
           <li class="nav-item">
             <%= link_to "Finished", filtered_bottles_path(filter: :finished), class: "nav-link" %>
           </li>
-          <% if @inventory_mode %>
-            <li class="nav-item">
-              <%= link_to "Stocked", filtered_bottles_path(filter: :stocked), class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Not Stocked", filtered_bottles_path(filter: :unstocked), class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "End Inventory", toggle_inventory_bottles_path, data: { confirm: "End Inventory?" } %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "Start Inventory", toggle_inventory_bottles_path, data: { confirm: "Start Inventory?" } %>
-            </li>
-          <% end %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventory <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="nav-item">
+                <%= link_to "Stocked", filtered_bottles_path(filter: :stocked), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Not Stocked", filtered_bottles_path(filter: :unstocked), class: "nav-link" %>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li class="nav-item">
+                <% if @inventory_mode %>
+                  <%= link_to "End Inventory", toggle_inventory_bottles_path, data: { confirm: "End Inventory?" } %>
+                <% else %>
+                  <%= link_to "Start Inventory", toggle_inventory_bottles_path, data: { confirm: "Start Inventory?" } %>
+                <% end %>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li class="nav-item">
+                <%= link_to "Reset Stock", reset_stock_bottles_path, data: { confirm: "Reset all stock?" } %>
+              </li>
+            </ul>
+          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
