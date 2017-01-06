@@ -1,5 +1,6 @@
 <%= bootstrap_form_for(bottle, label_errors: true) do |f| %>
   <%= f.text_field :name %>
+  <%= f.text_field :details, help: "Private selection, bottle nickname, etc." %>
   <%= f.text_field :producer %>
   <%= f.select :spirit, %w(Bourbon Rye Scotch Rum Gin Other) %>
   <%= f.number_field :volume %>

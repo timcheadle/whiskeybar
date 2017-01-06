@@ -7,6 +7,9 @@
     <%= render "stock_button", bottle: @bottle, append_class: "pull-right mr-small hidden-xs" %>
   <% end %>
   <h1><%= @bottle.name %></h1>
+  <% if @bottle.details.present? %>
+    <h3 class="text-muted"><%= @bottle.details %></h3>
+  <% end %>
 </div>
 
 

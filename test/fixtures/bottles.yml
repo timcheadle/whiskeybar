@@ -3,6 +3,7 @@
 alice_bourbon:
   user: alice
   name: Alice Bourbon
+  details: Private selection for Alice
   producer: Buffalo Trace
   spirit: Bourbon
   volume: 750

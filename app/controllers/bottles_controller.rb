@@ -131,6 +131,7 @@ class BottlesController < ApplicationController
     def bottle_params
       params.require(:bottle).permit(
         :name,
+        :details,
         :producer,
         :spirit,
         :volume,

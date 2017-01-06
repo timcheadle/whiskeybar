@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106015450) do
+ActiveRecord::Schema.define(version: 20170106024433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170106015450) do
     t.integer  "user_id"
     t.date     "finished_on"
     t.boolean  "in_stock",     default: true
+    t.string   "details"
     t.index ["user_id"], name: "index_bottles_on_user_id", using: :btree
   end
 
