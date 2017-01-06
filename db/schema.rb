@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106014100) do
+ActiveRecord::Schema.define(version: 20170106015450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,11 +28,11 @@ ActiveRecord::Schema.define(version: 20170106014100) do
     t.string   "source"
     t.boolean  "open"
     t.string   "location"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "user_id"
     t.date     "finished_on"
-    t.boolean  "in_stock"
+    t.boolean  "in_stock",     default: true
     t.index ["user_id"], name: "index_bottles_on_user_id", using: :btree
   end
 
