@@ -1,4 +1,4 @@
-$('[data-bottle-id="<%= @bottle.id %>"] .stock-toggle')
+$('.stock-toggle[data-bottle-id="<%= @bottle.id %>"]')
   .attr('href', '<%= stock_bottle_path(@bottle) %>')
   .removeClass('btn-success')
   .addClass('btn-default');

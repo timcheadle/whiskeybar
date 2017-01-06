@@ -1,0 +1,7 @@
+<%= link_to (bottle.in_stock? ? unstock_bottle_path(bottle) : stock_bottle_path(bottle)),
+  remote: true,
+  data: { "bottle-id" => bottle.id },
+  class: "stock-toggle btn btn-#{bottle.in_stock? ? "success" : "default"} " + append_class do
+%>
+  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+<% end %>
