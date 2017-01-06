@@ -17,7 +17,7 @@ class Bottle < ApplicationRecord
   validates :quantity, numericality: { greater_than: 0, only_integer: true }
 
   validates :proof, numericality: { greater_than: 0, allow_nil: true }
-  validates :abv, numericality: { greater_than: 0, allow_nil: true }
+  validates :abv, numericality: { greater_than: 0, allow_nil: true }, if: -> (bottle) { bottle.proof.nil? }
 
   validates :release_year, numericality: { greater_than: 0, only_integer: true, allow_nil: true }
 
