@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       get "/:filter", to: "bottles#index", as: :filtered, constraints: { filter: /open|finished|stocked|unstocked/ }
       get "/toggle_inventory", to: "bottles#toggle_inventory", as: :toggle_inventory
+      get "/reset_stock", to: "bottles#reset_stock", as: :reset_stock
     end
 
     member do
