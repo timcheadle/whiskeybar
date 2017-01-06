@@ -19,6 +19,7 @@ class BottleTest < ActiveSupport::TestCase
 
   should validate_numericality_of(:volume).is_greater_than(0).only_integer
   should validate_numericality_of(:proof).is_greater_than(0).allow_nil
+  should validate_numericality_of(:abv).is_greater_than(0).allow_nil
   should validate_numericality_of(:release_year).is_greater_than(0).only_integer.allow_nil
   should validate_numericality_of(:quantity).is_greater_than(0).only_integer
 
@@ -43,5 +44,23 @@ class BottleTest < ActiveSupport::TestCase
     @bottle.location = nil
     @bottle.finished_on = Date.today
     assert @bottle.valid?
+  end
+
+  test "#abv= sets proof to ABV * 2" do
+    @bottle.proof = nil
+    @bottle.abv = 30
+    assert_equal 60, @bottle.proof
+  end
+
+  test "#proof is proof if not nil" do
+    @bottle.proof = 100
+    @bottle.abv = 20
+    assert_equal 100, @bottle.proof
+  end
+
+  test "#proof is nil if proof and abv are both nil" do
+    @bottle.abv = nil
+    @bottle.proof = nil
+    assert_nil @bottle.proof
   end
 end

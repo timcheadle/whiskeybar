@@ -1,7 +1,7 @@
 class Bottle < ApplicationRecord
   include PgSearch
 
-  attr_accessor :quantity
+  attr_accessor :abv, :quantity
 
   belongs_to :user
   validates :user, presence: true
@@ -17,6 +17,7 @@ class Bottle < ApplicationRecord
   validates :quantity, numericality: { greater_than: 0, only_integer: true }
 
   validates :proof, numericality: { greater_than: 0, allow_nil: true }
+  validates :abv, numericality: { greater_than: 0, allow_nil: true }
 
   validates :release_year, numericality: { greater_than: 0, only_integer: true, allow_nil: true }
 
@@ -38,6 +39,11 @@ class Bottle < ApplicationRecord
 
   def quantity
     @quantity || 1
+  end
+
+  def abv=(new_abv)
+    @abv = new_abv
+    self[:proof] = @abv.to_i * 2 if proof.nil?
   end
 
   def location=(new_location)

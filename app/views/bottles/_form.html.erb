@@ -2,20 +2,31 @@
   <%= f.text_field :name %>
   <%= f.text_field :producer %>
   <%= f.select :spirit, %w(Bourbon Rye Scotch Rum Gin Other) %>
-  <%= f.text_field :volume %>
-  <%= f.text_field :proof %>
-  <%= f.text_field :release_year %>
-  <%= f.text_field :price %>
+  <%= f.number_field :volume %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.number_field :proof %>
+    </div>
+    <div class="col-md-6">
+      <%= f.number_field :abv, label: "ABV" %>
+    </div>
+  </div>
+
+  <%= f.number_field :release_year %>
+  <%= f.number_field :price %>
   <%= f.text_field :source %>
   <%= f.text_field :acquired_on, value: Date.today %>
   <%= f.text_field :location %>
   <%= f.text_area :notes %>
 
   <% unless bottle.persisted? %>
-    <%= f.text_field :quantity %>
+    <%= f.number_field :quantity %>
   <% end %>
 
+  <%= f.check_box :in_stock%>
   <%= f.check_box :open %>
+
   <%= f.text_field :finished_on %>
 
   <%= f.primary %>

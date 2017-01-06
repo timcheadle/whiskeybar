@@ -135,6 +135,7 @@ class BottlesController < ApplicationController
         :spirit,
         :volume,
         :proof,
+        :abv,
         :release_year,
         :price,
         :source,
