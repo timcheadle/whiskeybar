@@ -23,7 +23,7 @@
 <ul class="list-unstyled bottles-list">
   <% @bottles.each do |bottle| %>
     <li class="row bottle-list-item" data-bottle-id="<%= bottle.id %>">
-      <div class="<%= @inventory_mode ? "col-xs-10" : "col-xs-12" %>">
+      <div class="<%= current_user.taking_inventory? ? "col-xs-10" : "col-xs-12" %>">
         <div class="row">
           <div class="col-md-7">
             <%= link_to bottle.name, bottle_path(bottle), class: "bottle-name" %>
@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <% if @inventory_mode %>
+      <% if current_user.taking_inventory? %>
         <div class="col-xs-2">
           <% if bottle.in_stock? %>
             <%= link_to unstock_bottle_path(bottle), remote: true, class: "stock-toggle btn btn-sm btn-success pull-right" do %>

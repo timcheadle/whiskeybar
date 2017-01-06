@@ -2,8 +2,10 @@ alice:
   name: Alice Alpha
   email: alice@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  taking_inventory: false
 
 bob:
   name: Bob Beta
   email: bob@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  taking_inventory: true

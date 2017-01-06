@@ -1,7 +1,6 @@
 class BottlesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_bottle, only: [:show, :edit, :update, :destroy, :stock, :unstock]
-  before_action :set_inventory_mode
 
   # GET /bottles
   # GET /bottles.json
@@ -105,7 +104,7 @@ class BottlesController < ApplicationController
   end
 
   def toggle_inventory
-    session[:inventory_mode] = !session[:inventory_mode]
+    current_user.toggle(:taking_inventory).save
     redirect_to bottles_path
   end
 
@@ -126,10 +125,6 @@ class BottlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bottle
       @bottle = Bottle.find_by(user: current_user, id: params[:id])
-    end
-
-    def set_inventory_mode
-      @inventory_mode = !!session[:inventory_mode]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

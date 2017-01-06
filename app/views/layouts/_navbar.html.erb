@@ -33,7 +33,7 @@
               </li>
               <li role="separator" class="divider"></li>
               <li class="nav-item">
-                <% if @inventory_mode %>
+                <% if current_user.taking_inventory? %>
                   <%= link_to "End Inventory", toggle_inventory_bottles_path, data: { confirm: "End Inventory?" } %>
                 <% else %>
                   <%= link_to "Start Inventory", toggle_inventory_bottles_path, data: { confirm: "Start Inventory?" } %>
