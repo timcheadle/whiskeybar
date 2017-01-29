@@ -143,7 +143,7 @@ class BottlesController < ApplicationController
         :acquired_on,
         :notes,
         :open,
-        :finished,
+        :finished_on,
         :location,
         :quantity,
         :in_stock
