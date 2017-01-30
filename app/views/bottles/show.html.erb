@@ -12,7 +12,7 @@
   <div class="pull-left">
     <% if @bottle.finished? %>
       <span class="bottle-status-finished">
-        <span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Finished
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Finished
       </span>
     <% elsif @bottle.open? %>
       <span class="bottle-status-open">
