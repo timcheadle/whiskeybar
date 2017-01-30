@@ -47,10 +47,10 @@ class Bottle < ApplicationRecord
   end
 
   def location=(new_location)
-    self[:location] = new_location.try(:capitalize)
+    self[:location] = new_location.try(:titleize)
   end
 
   def spirit=(new_spirit)
-    self[:spirit] = new_spirit.try(:capitalize)
+    self[:spirit] = new_spirit.try(:titleize)
   end
 end
