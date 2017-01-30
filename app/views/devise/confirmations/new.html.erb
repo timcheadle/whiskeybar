@@ -5,7 +5,7 @@
 
   <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
 
-  <%= f.submit "Resend confirmation instructions" %>
+  <%= f.primary "Resend confirmation instructions" %>
 <% end %>
 
 <%= render "devise/shared/links" %>
