@@ -1,11 +1,6 @@
 <%= content_for(:title, @bottle.name) %>
 
 <div class="page-header">
-  <%= link_to "Edit", edit_bottle_path(@bottle), class: "btn btn-primary pull-right hidden-xs" %>
-  <%= link_to "Duplicate", duplicate_bottle_path(@bottle), class: "btn btn-default pull-right mr-small hidden-xs" %>
-  <% if current_user.taking_inventory? %>
-    <%= render "stock_button", bottle: @bottle, append_class: "pull-right mr-small hidden-xs" %>
-  <% end %>
   <h1><%= @bottle.name %></h1>
   <% if @bottle.details.present? %>
     <h3 class="text-muted"><%= @bottle.details %></h3>
@@ -13,12 +8,29 @@
 </div>
 
 
-<div class="visible-xs mb-medium">
-  <%= link_to "Edit", edit_bottle_path(@bottle), class: "btn btn-primary" %>
-  <%= link_to "Duplicate", duplicate_bottle_path(@bottle), class: "btn btn-default" %>
-  <% if current_user.taking_inventory? %>
-    <%= render "stock_button", bottle: @bottle, append_class: "" %>
-  <% end %>
+<div class="mb-medium clearfix">
+  <div class="pull-left">
+    <% if @bottle.finished? %>
+      <span class="bottle-status-finished">
+        <span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Finished
+      </span>
+    <% elsif @bottle.open? %>
+      <span class="bottle-status-open">
+        <span class="glyphicon glyphicon-grain" aria-hidden="true"></span> Open
+      </span>
+      <%= link_to "Finish", finish_bottle_path(@bottle), class: "btn btn-info" %>
+    <% else %>
+      <%= link_to "Open", open_bottle_path(@bottle), class: "btn btn-info" %>
+    <% end %>
+  </div>
+
+  <div class="pull-right mb-medium">
+    <%= link_to "Edit", edit_bottle_path(@bottle), class: "btn btn-primary" %>
+    <%= link_to "Duplicate", duplicate_bottle_path(@bottle), class: "btn btn-default" %>
+    <% if current_user.taking_inventory? %>
+      <%= render "stock_button", bottle: @bottle, append_class: "" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="row bottle-data">

@@ -33,9 +33,27 @@ body {
   margin-bottom: 1.5rem;
 }
 
+// Bottle detail
+.bottle-status-open {
+  color: $state-success-text;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.bottle-status-finished {
+  color: $state-danger-text;
+  display: inline-block;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-right: 20px;
+}
+
 // Margin utils
 .mr-small {
   margin-right: 0.5rem !important;
+}
+.mr-medium {
+  margin-right: 1rem !important;
 }
 .mb-medium {
   margin-bottom: 20px !important;

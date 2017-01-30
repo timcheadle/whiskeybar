@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       get "/duplicate", to: "bottles#duplicate", as: :duplicate
       get "/stock", to: "bottles#stock", as: :stock
       get "/unstock", to: "bottles#unstock", as: :unstock
+      get "/open", to: "bottles#crack_open", as: :open
+      get "/finish", to: "bottles#finish", as: :finish
     end
   end
 

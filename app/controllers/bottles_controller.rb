@@ -1,6 +1,6 @@
 class BottlesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_bottle, only: [:show, :edit, :update, :destroy, :stock, :unstock]
+  before_action :set_bottle, only: [:show, :edit, :update, :destroy, :stock, :unstock, :crack_open, :finish]
 
   # GET /bottles
   # GET /bottles.json
@@ -119,6 +119,16 @@ class BottlesController < ApplicationController
 
   def unstock
     @bottle.update(in_stock: false)
+  end
+
+  def crack_open
+    @bottle.update(open: true)
+    redirect_to @bottle
+  end
+
+  def finish
+    @bottle.update(finished_on: Date.today)
+    redirect_to @bottle
   end
 
   private
