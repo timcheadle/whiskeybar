@@ -18,9 +18,9 @@ class BottlesController < ApplicationController
     when "finished"
       @bottles = @bottles.finished
     when "stocked"
-      @bottles = @bottles.stocked
+      @bottles = @bottles.current.stocked
     when "unstocked"
-      @bottles = @bottles.unstocked
+      @bottles = @bottles.current.unstocked
     else
       @bottles = @bottles.current
     end
