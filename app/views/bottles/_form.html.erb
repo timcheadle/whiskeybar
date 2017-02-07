@@ -7,16 +7,16 @@
 
   <div class="row">
     <div class="col-md-6">
-      <%= f.number_field :proof %>
+      <%= f.number_field :proof, step: "any" %>
     </div>
     <div class="col-md-6">
-      <%= f.number_field :abv, label: "ABV" %>
+      <%= f.number_field :abv, label: "ABV", step: "any" %>
     </div>
   </div>
 
   <%= f.select :release_year, (1870..Time.now.year).to_a.reverse %>
 
-  <%= f.number_field :price %>
+  <%= f.number_field :price, step: "0.01" %>
   <%= f.text_field :source %>
   <%= f.text_field :acquired_on, value: Date.today, class: "datepicker" %>
   <%= f.text_field :location %>
