@@ -22,6 +22,7 @@ class Bottle < ApplicationRecord
   validates :release_year, numericality: { greater_than: 0, only_integer: true, allow_blank: true }
 
   scope :open, -> { where(open: true) }
+  scope :unopened, -> { where(open: false) }
   scope :finished, -> { where.not(finished_on: nil) }
   scope :current, -> { where(finished_on: nil) }
   scope :stocked, -> { where(in_stock: true) }

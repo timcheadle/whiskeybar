@@ -8,57 +8,6 @@
   <h1><%= page_title %></h1>
 </div>
 
-<div class="row">
-  <div class="col-md-6">
-    <%= bootstrap_form_tag(method: :get) do |f| %>
-      <%= f.text_field :q, hide_label: true, value: @query, append: f.submit("Search", class: "btn btn-primary") %>
-      <p class="text-muted">
-        <%= pluralize(@bottles.size, "bottle") %> found
-        <% if @query.present? %>| <%= link_to "Clear search" %><% end %>
-      </p>
-    <% end %>
-  </div>
-</div>
+<%= render "searchbar" %>
 
-<ul class="list-unstyled bottles-list">
-  <% @bottles.each do |bottle| %>
-    <li class="row bottle-list-item">
-      <div class="<%= current_user.taking_inventory? ? "col-xs-10" : "col-xs-12" %>">
-        <div class="row">
-          <div class="col-md-7">
-            <%= link_to bottle.name, bottle_path(bottle), class: "bottle-name" %>
-            <% if bottle.details.present? %>
-              <br>
-              <small class="text-muted"><%= bottle.details %></small>
-            <% end %>
-          </div>
-          <div class="col-md-5 bottle-details">
-            <div class="row">
-              <div class="col-xs-2">
-                <%= bottle.release_year %>
-              </div>
-              <div class="col-xs-3">
-                <%= bottle.spirit %>
-              </div>
-              <div class="col-xs-2">
-                <%= bottle.proof %>&deg;
-              </div>
-              <div class="col-xs-2">
-                <%= bottle.volume %>ml
-              </div>
-              <div class="col-xs-2">
-                <%= bottle.location %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <% if current_user.taking_inventory? %>
-        <div class="col-xs-2">
-          <%= render "stock_button", bottle: bottle, append_class: "btn-sm pull-right" %>
-        </div>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<%= render "bottle_list", bottles: @bottles %>

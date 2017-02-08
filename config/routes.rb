@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :bottles do
     collection do
       get "/:filter", to: "bottles#index", as: :filtered, constraints: { filter: /open|finished|stocked|unstocked/ }
+      get "/search", to: "bottles#search", as: :search
       get "/toggle_inventory", to: "bottles#toggle_inventory", as: :toggle_inventory
       get "/reset_stock", to: "bottles#reset_stock", as: :reset_stock
     end
