@@ -18,7 +18,7 @@
 
   <%= f.number_field :price, step: "0.01" %>
   <%= f.text_field :source %>
-  <%= f.text_field :acquired_on, value: Date.today, class: "datepicker" %>
+  <%= f.text_field :acquired_on, value: f.object.acquired_on || Date.today, class: "datepicker" %>
   <%= f.text_field :location %>
   <%= f.text_area :notes %>
 
