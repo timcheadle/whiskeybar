@@ -1,0 +1,26 @@
+<% page_title = "Search Results" %>
+
+<div class="page-header">
+  <%= link_to "Add Bottle", new_bottle_path, class: "btn btn-success pull-right hidden-xs" %>
+  <%= link_to new_bottle_path, class: "btn btn-success pull-right visible-xs" do %>
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  <% end %>
+  <h1><%= page_title %></h1>
+</div>
+
+<%= render "searchbar" %>
+
+<% if @open_bottles.any? %>
+  <h2>Open Bottles <small>(<%= @open_bottles.size %>)</small></h2>
+  <%= render "bottle_list", bottles: @open_bottles %>
+<% end %>
+
+<% if @unopened_bottles.any? %>
+  <h2>Unopened Bottles <small>(<%= @unopened_bottles.size %>)</small></h2>
+  <%= render "bottle_list", bottles: @unopened_bottles %>
+<% end %>
+
+<% if @finished_bottles.any? %>
+  <h2>Finished Bottles <small>(<%= @finished_bottles.size %>)</small></h2>
+  <%= render "bottle_list", bottles: @finished_bottles %>
+<% end %>

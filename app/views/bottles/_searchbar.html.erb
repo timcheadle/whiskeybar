@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-6">
+    <%= bootstrap_form_tag(url: search_bottles_url, method: :get) do |f| %>
+      <%= f.text_field :q, hide_label: true, value: @query, append: f.submit("Search", class: "btn btn-primary") %>
+      <p class="text-muted">
+        <%= pluralize(@bottles.size, "bottle") %> found
+        <% if @query.present? %>| <%= link_to "Clear search", bottles_path %><% end %>
+      </p>
+    <% end %>
+  </div>
+</div>
