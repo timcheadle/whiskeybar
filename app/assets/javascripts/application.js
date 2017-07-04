@@ -17,6 +17,15 @@
 //= require_tree .
 
 $(document).ready(function() {
+  // Map forward slash to search
+  $(document).keydown(function(e) {
+    if ($('input:focus, textarea:focus').length === 0 && e.keyCode === 191) {
+      $('input#q').focus().select();
+      return false;
+    }
+  });
+
+  // Enable datepicker UI
   $('.datepicker').datepicker({
     autoclose: true,
     format: "yyyy-mm-dd",
