@@ -29,7 +29,7 @@ class Bottle < ApplicationRecord
   scope :unstocked, -> { where(in_stock: false) }
 
   pg_search_scope :search_for,
-    against: %i(name producer spirit release_year notes location),
+    against: %i(name details producer spirit release_year notes location),
     using: {
       tsearch: { prefix: true }
     }
