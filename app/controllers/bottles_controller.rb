@@ -28,7 +28,7 @@ class BottlesController < ApplicationController
     @query = params[:q]
     @bottles = @bottles.search_for(@query)
 
-    @open_bottles = @bottles.open
+    @open_bottles = @bottles.current.open
     @unopened_bottles = @bottles.current.unopened
     @finished_bottles = @bottles.finished
   end
