@@ -10,7 +10,7 @@ class BottlesController < ApplicationController
 
     case @filter
     when "open"
-      @bottles = @bottles.open
+      @bottles = @bottles.current.open
     when "finished"
       @bottles = @bottles.finished
     when "stocked"
