@@ -1,6 +1,6 @@
 class BottlesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_bottle, only: [:show, :edit, :update, :destroy, :stock, :unstock, :crack_open, :finish]
+  before_action :set_bottle, only: [:show, :edit, :update, :destroy, :stock, :unstock, :crack_open, :finish, :sell]
 
   # GET /bottles
   # GET /bottles.json
@@ -13,6 +13,8 @@ class BottlesController < ApplicationController
       @bottles = @bottles.current.open
     when "finished"
       @bottles = @bottles.finished
+    when "sell"
+      @bottles = @bottles.current.tagged_with("sell")
     when "stocked"
       @bottles = @bottles.current.stocked
     when "unstocked"
@@ -135,6 +137,17 @@ class BottlesController < ApplicationController
 
   def finish
     @bottle.update(finished_on: Date.today)
+    redirect_to @bottle
+  end
+
+  def sell
+    if @bottle.tag_list.include?("sell")
+      @bottle.tag_list.remove("sell")
+    else
+      @bottle.tag_list.add("sell")
+    end
+
+    @bottle.save
     redirect_to @bottle
   end
 

@@ -1,6 +1,8 @@
 class Bottle < ApplicationRecord
   include PgSearch
 
+  acts_as_taggable
+
   attr_accessor :abv, :quantity
 
   belongs_to :user

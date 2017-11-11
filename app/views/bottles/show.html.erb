@@ -21,6 +21,12 @@
     <% else %>
       <%= link_to "Open", open_bottle_path(@bottle), class: "btn btn-info" %>
     <% end %>
+
+    <% if @bottle.tag_list.include?("sell") %>
+      <%= link_to "Don't Sell", sell_bottle_path(@bottle), class: "btn btn-warning" %>
+    <% else %>
+      <%= link_to "Sell", sell_bottle_path(@bottle), class: "btn btn-info" %>
+    <% end %>
   </div>
 
   <div class="pull-right mb-medium">

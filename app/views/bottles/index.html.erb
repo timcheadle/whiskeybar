@@ -1,10 +1,6 @@
 <% page_title = "#{@filter.present? ? @filter.capitalize : "Current" } Bottles" %>
 
 <div class="page-header">
-  <%= link_to "Add Bottle", new_bottle_path, class: "btn btn-success pull-right hidden-xs" %>
-  <%= link_to new_bottle_path, class: "btn btn-success pull-right visible-xs" do %>
-    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-  <% end %>
   <h1><%= page_title %></h1>
 </div>
 

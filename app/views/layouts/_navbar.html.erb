@@ -14,14 +14,27 @@
       <% if user_signed_in? %>
         <ul class="nav navbar-nav">
           <li class="nav-item">
-            <%= link_to "Current", bottles_path, class: "nav-link" %>
+            <%= link_to "Add Bottle", new_bottle_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Open", filtered_bottles_path(filter: :open), class: "nav-link" %>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Filter <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="nav-item">
+                <%= link_to "Current", bottles_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Open", filtered_bottles_path(filter: :open), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "To Sell", filtered_bottles_path(filter: :sell), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Finished", filtered_bottles_path(filter: :finished), class: "nav-link" %>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <%= link_to "Finished", filtered_bottles_path(filter: :finished), class: "nav-link" %>
-          </li>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventory <span class="caret"></span></a>
             <ul class="dropdown-menu">
