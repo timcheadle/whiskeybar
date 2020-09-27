@@ -24,3 +24,7 @@
   <h2>Finished Bottles <small>(<%= @finished_bottles.size %>)</small></h2>
   <%= render "bottle_list", bottles: @finished_bottles %>
 <% end %>
+
+<div style="margin: 40px 0;">
+  <%= link_to 'Download CSV', format: :csv, q: @query %>
+</div>

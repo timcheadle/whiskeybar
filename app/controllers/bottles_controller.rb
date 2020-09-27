@@ -22,6 +22,11 @@ class BottlesController < ApplicationController
     else
       @bottles = @bottles.current
     end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @bottles.to_csv, filename: "bottles-#{Date.today.strftime('%Y-%m-%d')}.csv" }
+    end
   end
 
   def search
@@ -33,6 +38,11 @@ class BottlesController < ApplicationController
     @open_bottles = @bottles.current.open
     @unopened_bottles = @bottles.current.unopened
     @finished_bottles = @bottles.finished
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @bottles.to_csv, filename: "bottles-#{@query.parameterize}-#{Date.today.strftime('%Y-%m-%d')}.csv" }
+    end
   end
 
   # GET /bottles/1

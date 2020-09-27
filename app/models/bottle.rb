@@ -1,3 +1,5 @@
+require 'csv'
+
 class Bottle < ApplicationRecord
   include PgSearch
 
@@ -55,5 +57,36 @@ class Bottle < ApplicationRecord
 
   def spirit=(new_spirit)
     self[:spirit] = new_spirit.try(:titleize)
+  end
+
+  def self.to_csv
+    attributes = %w(
+      name
+      details
+      spirit
+      release_year
+      producer
+      volume
+      proof
+      price
+      location
+      open
+      in_stock
+      source
+      acquired_on
+      finished_on
+      tag_list
+      notes
+      created_at
+      updated_at
+    )
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |bottle|
+        csv << attributes.map { |attr| bottle.send(attr) }
+      end
+    end
   end
 end
