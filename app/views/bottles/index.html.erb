@@ -7,3 +7,7 @@
 <%= render "searchbar" %>
 
 <%= render "bottle_list", bottles: @bottles %>
+
+<div style="margin: 40px 0;">
+  <%= link_to 'Download CSV', format: :csv %>
+</div>
