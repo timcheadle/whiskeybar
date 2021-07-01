@@ -1,7 +1,7 @@
 require 'csv'
 
 class Bottle < ApplicationRecord
-  include PgSearch
+  include PgSearch::Model
 
   acts_as_taggable
 
