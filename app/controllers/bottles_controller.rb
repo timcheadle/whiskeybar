@@ -5,7 +5,7 @@ class BottlesController < ApplicationController
   # GET /bottles
   # GET /bottles.json
   def index
-    @bottles = Bottle.where(user: current_user).order('LOWER(name), release_year')
+    @bottles = Bottle.where(user: current_user).order(Arel.sql('LOWER(name), release_year'))
     @filter = params[:filter].try(:downcase)
 
     case @filter
